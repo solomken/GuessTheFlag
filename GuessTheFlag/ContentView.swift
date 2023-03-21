@@ -19,7 +19,7 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2) //3 flags so correct answer is one of them 3
     
     @State private var score = 0
-    @State private var questionCounter = 0
+    @State private var questionCounter = 0 //make the game show only 8 questions
     
     var body: some View {
         ZStack {
