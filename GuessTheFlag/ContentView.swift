@@ -23,10 +23,13 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            RadialGradient(stops: [
-                .init(color: .indigo, location: 0.3),
-                .init(color: .gray, location: 0.3)
-            ], center: .top, startRadius: 200, endRadius: 700)
+//            RadialGradient(stops: [
+//                .init(color: .indigo, location: 0.3),
+//                .init(color: .mint, location: 0.3)
+//            ], center: .top, startRadius: 200, endRadius: 700)
+            Image("background")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
             .ignoresSafeArea()
             
             VStack {
