@@ -35,7 +35,7 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 
-                Text("Guess the Flag")
+                Text("Guess the flag")
                     .font(.largeTitle.weight(.bold))
                     .foregroundColor(.white)
                 
@@ -56,7 +56,7 @@ struct ContentView: View {
                             if questionCounter == 8 {
                                 //flagTapped(number)
                                 if score >= 4 {
-                                    gameOverTitle = "Good job!"
+                                    gameOverTitle = "Good job bro!"
                                 } else {
                                     gameOverTitle = "Will be better next time bro!"
                                 }
@@ -86,13 +86,13 @@ struct ContentView: View {
         .alert(scoreTitle, isPresented: $showingScore) {
             Button("Continue", action: askQuestion)
         } message: {
-            Text("Your score is \(score)")
+            Text("Bro your score is \(score)")
         }
         
         .alert(gameOverTitle, isPresented: $showingGameOver) {
             Button("Start new game", action: gameReset)
         } message: {
-            Text("Your score is \(score)")
+            Text("Bro your score is \(score)")
         }
     }
     
