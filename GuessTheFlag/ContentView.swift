@@ -52,6 +52,16 @@ struct ContentView: View {
                     ForEach(0..<3) { number in
                         Button {
                             flagTapped(number)
+                            
+                            if questionCounter == 8 {
+                                //flagTapped(number)
+                                if score >= 4 {
+                                    gameOverTitle = "Good job bro!"
+                                } else {
+                                    gameOverTitle = "Will be better next time bro!"
+                                }
+                                showingGameOver = true
+                            }
                         } label: {
                             Image(coutries[number])
                                 .renderingMode(.original) //because it's a button Swift can use blue accent color for the image to show that element is clickable. here we block this functionality
@@ -87,26 +97,16 @@ struct ContentView: View {
     }
     
     func flagTapped (_ number: Int) {
-        questionCounter += 1
-        
-        scoreTitle = "Wrong! That’s the flag of \(coutries[number])"
-        
         if number == correctAnswer {
             scoreTitle = "Correct"
             score += 1
+            questionCounter += 1
+        } else {
+            scoreTitle = "Wrong! That’s the flag of \(coutries[number])"
+            questionCounter += 1
         }
-        
         if questionCounter < 8 {
             showingScore = true
-        } else {
-            if score > 4 {
-                gameOverTitle += "Good job bro!"
-            } else {
-                gameOverTitle += "Will be better next time bro!"
-            }
-            
-            gameOverTitle += "\n\n" + scoreTitle
-            showingGameOver = true
         }
     }
     
@@ -120,8 +120,8 @@ struct ContentView: View {
     func gameReset() {
         score = 0
         questionCounter = 0
-        askQuestion()
-        gameOverTitle = ""
+        coutries = coutries.shuffled()
+        correctAnswer = Int.random(in: 0...2)
         }
     }
 
