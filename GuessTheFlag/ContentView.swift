@@ -11,15 +11,15 @@ struct ContentView: View {
     @State private var showingScore = false //alert showing
     @State private var scoreTitle = "" //title on the alert - correct or wrong
     
-    @State private var showingGameOver = false
-    @State private var gameOverTitle = ""
+    @State private var questionCounter = 1 //make the game show only 8 questions
+    @State private var showingResults = false
     
-    @State private var coutries = ["Estonia", "Poland", "UK", "US", "Monaco", "Spain", "Germany", "France", "Ireland", "Italy", "Ukraine"].shuffled()
+    @State private var coutries = allCountries.shuffled()
+    static let allCountries = ["Estonia", "Poland", "UK", "US", "Monaco", "Spain", "Germany", "France", "Ireland", "Italy", "Ukraine"]
     
     @State private var correctAnswer = Int.random(in: 0...2) //3 flags so correct answer is one of them 3
     
     @State private var score = 0
-    @State private var questionCounter = 0 //make the game show only 8 questions
     
     var body: some View {
         ZStack {
@@ -79,49 +79,52 @@ struct ContentView: View {
             Text("Bro your score is \(score)")
         }
         
-        .alert(gameOverTitle, isPresented: $showingGameOver) {
-            Button("Start new game", action: gameReset)
+        .alert("Game over!", isPresented: $showingResults) {
+            Button("Start new game", action: newGame)
         } message: {
-            Text("Bro your score is \(score)")
+            Text("Bro your final score was \(score)")
         }
     }
     
     func flagTapped (_ number: Int) {
-        questionCounter += 1
-        
-        scoreTitle = "Wrong! That’s the flag of \(coutries[number])"
         
         if number == correctAnswer {
             scoreTitle = "Correct"
             score += 1
-        }
-        
-        if questionCounter < 8 {
-            showingScore = true
         } else {
-            if score > 4 {
-                gameOverTitle += "Good job bro!"
+            let needThe = ["UK", "US"]
+            let theirAnswer = coutries[number]
+            
+            if needThe.contains(theirAnswer) {
+                scoreTitle = "Wrong! That’s the flag of the \(theirAnswer)"
             } else {
-                gameOverTitle += "Will be better next time bro!"
+                scoreTitle = "Wrong! That’s the flag of \(theirAnswer)"
             }
             
-            gameOverTitle += "\n\n" + scoreTitle
-            showingGameOver = true
+            if score > 0 {
+                score -= 1
+            }
+        }
+        
+        if questionCounter == 8 {
+            showingResults = true
+        } else {
+            showingScore = true
         }
     }
     
     func askQuestion() {
-        if questionCounter < 8 {
-            coutries = coutries.shuffled()
-            correctAnswer = Int.random(in: 0...2)
-        }
+        coutries.remove(at: correctAnswer) //we removing here countries which was correct guessed by user so countries will not be repeated while 1 game session
+        coutries = coutries.shuffled()
+        correctAnswer = Int.random(in: 0...2)
+        questionCounter += 1
     }
     
-    func gameReset() {
+    func newGame() {
         score = 0
         questionCounter = 0
+        coutries = Self.allCountries //here we are resetting array of the countries before asking new question
         askQuestion()
-        gameOverTitle = ""
         }
     }
 
