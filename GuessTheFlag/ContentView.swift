@@ -21,16 +21,24 @@ struct ContentView: View {
     
     @State private var score = 0
     
+    struct FlagImage: View {
+        var imageName: String
+        
+        var body: some View {
+            Image(imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea()
+        }
+    }
+    
     var body: some View {
         ZStack {
 //            RadialGradient(stops: [
 //                .init(color: .indigo, location: 0.3),
 //                .init(color: .mint, location: 0.3)
 //            ], center: .top, startRadius: 200, endRadius: 700)
-            Image("background")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-            .ignoresSafeArea()
+            FlagImage(imageName: "background")
             
             VStack {
                 Spacer()
