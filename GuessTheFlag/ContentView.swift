@@ -22,13 +22,13 @@ struct ContentView: View {
     @State private var score = 0
     
     struct FlagImage: View {
-        var imageName: String
+        let imageName: String
         
         var body: some View {
             Image(imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .ignoresSafeArea()
+                .renderingMode(.original) //because it's a button Swift can use blue accent color for the image to show that element is clickable. here we block this functionality
+                .clipShape(Capsule())
+                .shadow(radius: 5)
         }
     }
     
@@ -38,7 +38,10 @@ struct ContentView: View {
 //                .init(color: .indigo, location: 0.3),
 //                .init(color: .mint, location: 0.3)
 //            ], center: .top, startRadius: 200, endRadius: 700)
-            FlagImage(imageName: "background")
+            Image("background")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea()
             
             VStack {
                 Spacer()
@@ -61,10 +64,7 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                         } label: {
-                            Image(coutries[number])
-                                .renderingMode(.original) //because it's a button Swift can use blue accent color for the image to show that element is clickable. here we block this functionality
-                                .clipShape(Capsule())
-                                .shadow(radius: 5)
+                            FlagImage(imageName: coutries[number])
                         }
                     }
                 }

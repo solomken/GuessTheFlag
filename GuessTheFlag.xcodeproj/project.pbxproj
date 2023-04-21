@@ -12,6 +12,7 @@
 		45ACF1D629B8C1D40020C011 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ACF1D529B8C1D40020C011 /* ContentView.swift */; };
 		45ACF1D829B8C1D60020C011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45ACF1D729B8C1D60020C011 /* Assets.xcassets */; };
 		45ACF1DB29B8C1D60020C011 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45ACF1DA29B8C1D60020C011 /* Preview Assets.xcassets */; };
+		45C7401B29F2D1D8000A22C1 /* FlagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C7401A29F2D1D8000A22C1 /* FlagImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		45ACF1D529B8C1D40020C011 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContentView.swift; sourceTree = "<group>"; };
 		45ACF1D729B8C1D60020C011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45ACF1DA29B8C1D60020C011 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		45C7401A29F2D1D8000A22C1 /* FlagImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				45ACF1D329B8C1D40020C011 /* GuessTheFlagApp.swift */,
 				45ACF1D529B8C1D40020C011 /* ContentView.swift */,
+				45C7401A29F2D1D8000A22C1 /* FlagImage.swift */,
 				45ACF1D729B8C1D60020C011 /* Assets.xcassets */,
 				45ACF1D929B8C1D60020C011 /* Preview Content */,
 				459958F529CCD59400C09252 /* .gitignore */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45ACF1D629B8C1D40020C011 /* ContentView.swift in Sources */,
+				45C7401B29F2D1D8000A22C1 /* FlagImage.swift in Sources */,
 				45ACF1D429B8C1D40020C011 /* GuessTheFlagApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
