@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+extension Image {
+    func flagImage() -> some View {
+        self
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .ignoresSafeArea()
+    }
+}
+
 struct ContentView: View {
     @State private var showingScore = false //alert showing
     @State private var scoreTitle = "" //title on the alert - correct or wrong
@@ -21,6 +30,7 @@ struct ContentView: View {
     
     @State private var score = 0
     
+    
     var body: some View {
         ZStack {
 //            RadialGradient(stops: [
@@ -28,9 +38,7 @@ struct ContentView: View {
 //                .init(color: .mint, location: 0.3)
 //            ], center: .top, startRadius: 200, endRadius: 700)
             Image("background")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-            .ignoresSafeArea()
+                .flagImage()
             
             VStack {
                 Spacer()
